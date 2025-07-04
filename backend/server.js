@@ -19,10 +19,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-//  manually handle OPTIONS requests (preflight) globally:
-// app.options("*", cors(corsOptions)); // ✅ valid path format
- 
-
 
 
 // Routes
