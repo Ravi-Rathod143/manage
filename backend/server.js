@@ -10,12 +10,18 @@ app.use(express.json());
 
 //  only this CORS block:
 const corsOptions = {
-  origin: "https://jhgjhgj.netlify.app",
+  origin: ["https://jhgjhgj.netlify.app", "http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
+  optionsSuccessStatus: 200, 
 };
+
 app.use(cors(corsOptions));
+
+//  manually handle OPTIONS requests (preflight) globally:
+// app.options("*", cors(corsOptions)); // ✅ valid path format
+ 
 
 
 
@@ -26,7 +32,7 @@ const orderRoutes = require("./routes/orderRoutes");
 
 
 app.get("/", (req, res) => {
-  res.send("API is running successfully! 🎉");
+  res.send("API is running successfully! ");
 });
 
 
