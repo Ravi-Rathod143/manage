@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// ✅ CORS Middleware - Allow Netlify domain instead of localhost
+//  CORS Middleware - Allow Netlify domain instead of localhost
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://jhgjhgj.netlify.app");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
@@ -27,21 +27,21 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// ✅ Routes
+//  Routes
 const customerRoutes = require("./routes/customerRoutes");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 
-// ✅ MongoDB Connect
+//  MongoDB Connect
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
-// ✅ API Routes
+//  API Routes
 app.use("/api/customers", customerRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
-// ✅ Start server
+//  Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
