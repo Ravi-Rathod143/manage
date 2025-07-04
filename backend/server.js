@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// ✅ Keep only this CORS block:
+//  only this CORS block:
 const corsOptions = {
   origin: "https://jhgjhgj.netlify.app",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
@@ -17,10 +17,18 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+
+
 // Routes
 const customerRoutes = require("./routes/customerRoutes");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+
+
+app.get("/", (req, res) => {
+  res.send("API is running successfully! 🎉");
+});
+
 
 // MongoDB connect
 mongoose.connect(process.env.MONGO_URI)
